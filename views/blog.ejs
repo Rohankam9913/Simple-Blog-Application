@@ -1,0 +1,102 @@
+<%-include("upper_body.ejs")%>
+
+    <%-include("header.ejs")%>
+
+        <div class="individual_blogs">
+            <h2>
+                <%= individual_blog_details.title %>
+            </h2>
+            <ul class="list-items">
+                <% if(individual_blog_details.tags.length> 0) { %>
+                    <% for(let i=0;i < individual_blog_details.tags.length; i++){ %>
+                        <li class="tag_names">
+                            <%= individual_blog_details.tags[i] %>
+                        </li>
+                    <% } %>
+                <% } %>
+                    <li class="tag_names" style="background-color: white;">
+                        <%= dateTime %>
+                    </li>
+            </ul>
+
+            <div class="author_name">
+                <img src="/favicon.png" alt="user-image" class="author_img">
+                <p><strong>
+                        <%= individual_blog_details.author.username %>
+                    </strong></p>
+            </div>
+
+            <h3>
+                <%= individual_blog_details.description %>
+            </h3>
+            <hr>
+
+            <div class="blog_content">
+                <p>
+                    <%= individual_blog_details.content %>
+                </p>
+            </div>
+
+            <form class="comment_section">
+                <h3>Comments (<%= all_comments.length %>)</h3>
+                <div style="height: 30vh; display: flex; flex-direction: column;">
+                    <textarea rows="4" cols="60" placeholder="post a comment" name="comment" id="input"></textarea>
+                    <button onclick="Post()" class="post">Post</button>
+                </div>
+
+                <% for(let i=0;i < all_comments.length;i++) { %>
+                    <div class="comment_container">
+                        <div class="user">
+                            <img src="/favicon.png">
+                            <p class="name">
+                                <%= all_comments[i].username.username %>
+                            </p>
+                            <span class="dot"></span>
+                            <p class="date">
+                                <%= comment_date_time[i] %>
+                            </p>
+                        </div>
+
+                        <p class="comment_content">
+                            <%= all_comments[i].comment %>
+                        </p>
+
+                        <span id="<%-all_comments[i]._id%>">
+                            <button type="button" class="like" id="<%- i %>" onclick="like_btn(this.id)">Likes (<%=all_comments[i].likes %>) </button>
+                        </span>
+                    </div>
+                    <% } %>
+            </form>
+        </div>
+
+        <script>
+            const form = document.querySelector(".comment_section");
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const comment = e.target.comment.value;
+                if (comment.length === 0) {
+                    alert("Coment box is empty");
+                    return;
+                }
+
+                let blogId = '<%- blog_id %>'
+
+                const response = await fetch("http://localhost:3000/comments/post_comment", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ comment, blogId })
+                });
+
+                const data = await response.json();
+                if (!data.error) {
+                    alert("Comment Posted");
+                    window.location.reload();
+                }
+
+            })
+        </script>
+       
+
+
+        <%- include("lower_body.ejs")%>

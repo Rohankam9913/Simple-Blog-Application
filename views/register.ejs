@@ -1,0 +1,66 @@
+<%- include("upper_body.ejs") %>
+    <form class="auth_container" id="register">
+        <h2>Register Page</h2>
+
+        <label>Enter Username</label>
+        <input type="text" required name="username">
+
+        <label>Enter Email</label>
+        <input type="text" required name="email">
+        <p class="error" id="email_error"></p>
+
+        <label>Enter Password</label>
+        <div class="show_password">
+            <input type="password" id="password" required name="password">
+            <button onclick="show_password()" id="show" type="button">show</button>
+        </div>
+        <p class="error" id="password_error"></p>
+
+        <button class="auth_btn" type="submit">register</button>
+        <p class="description">Already have an account ? <a href="/login">Login</a></p>
+    </form>
+
+    <script>
+        const register = document.getElementById("register");
+        register.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const username = e.target.username.value;
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+
+            if(password.length < 6){
+                const password_error = document.getElementById("password_error");
+                password_error.innerHTML = "Password must be atleast 6 characters long";
+            }
+
+            if(check_email(email) === false){
+                const email_error = document.getElementById("email_error");
+                email_error.innerHTML = "Invalid email id";
+                return;
+            }
+
+            const response = await fetch("http://localhost:3000/register", {
+                method: "POST",
+                body: JSON.stringify({ username, email, password }),
+                headers: { "Content-Type": "application/json" }
+            });
+
+            const data = await response.json();
+
+            if(data.error === "This email is already registered"){
+                const email_error = document.getElementById("email_error");
+                email_error.innerHTML = "This email is already registered";
+            }
+
+            if (!data.error) {
+                localStorage.setItem("user",JSON.stringify(data));
+
+                setTimeout(() => {
+                    navigateTo("/");
+                }, 1200)
+            }
+        })
+    </script>
+
+    <%- include("lower_body.ejs") %>

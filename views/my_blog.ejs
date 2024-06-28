@@ -1,0 +1,27 @@
+<%- include("upper_body.ejs") %>
+    <%- include("header.ejs") %>
+    
+    <main class="main_body">
+        <% if (blogs.length === 0) { %>
+            <h2 style="text-align: center; margin-top: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 22px;">No Blogs to show</h2>
+        <% } else { %>
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 19px; margin: 12px 10px;font-size: 20px;">My Posts</h2>
+
+            <% for(let i = 0;i < blogs.length;i++){ %>
+                <div class="blogs">
+                    <ul class="list-items">
+                        <% for(let tag = 0;tag < blogs[i].tags.length;tag++){ %>
+                            <li class="tag_names"><%= blogs[i].tags[tag] %></li>
+                        <% } %>
+                    </ul>
+
+                    <h3> <%= blogs[i].title %> </h3>
+                    <p><%= blogs[i].description %></p>
+                    <div class="link">
+                        <a href="/blogs/individual_blog/<%=`${blogs[i]._id}`%>">Read</a>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    </main>
+<%- include("lower_body.ejs") %>

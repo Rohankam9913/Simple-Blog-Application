@@ -1,0 +1,18 @@
+<main class="main_body">
+    <h2>Latest Blogs</h2>
+
+    <% for(let i = 0;i < all_blogs.length;i++) { %>
+        <div class="blogs">
+            <ul class="list-items">
+                <% for(let tag = 0;tag < all_blogs[i].tags.length;tag++){ %>
+                    <li class="tag_names"><%= all_blogs[i].tags[tag] %></li>
+                <% } %>
+            </ul>
+            <h3><%= all_blogs[i].title %></h3>
+            <p><%= all_blogs[i].description %></p>
+            <div class="tag_container link">
+                <a href="/blogs/individual_blog/<%=`${all_blogs[i]._id}`%>">Read</a>
+            </div>
+        </div>
+    <% } %>
+</main>

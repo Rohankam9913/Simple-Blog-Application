@@ -1,0 +1,47 @@
+<%- include("upper_body.ejs") %>
+    <%- include("header.ejs") %>
+
+    <section class="input_section">
+        <input placeholder="enter a tag" onkeyup="search_result(this.value)">
+    </section>
+    <main class="main_body">
+        <% if (all_blogs.length === 0) { %>
+            <h2 style="text-align: center; margin-top: 10px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 22px;">No Blogs to show</h2>
+        <% } else { %>
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 19px; margin: 12px 10px;font-size: 20px;">All Blogs</h2>
+
+            <% for(let i = 0;i < all_blogs.length;i++){ %>
+                <div class="blogs">
+                    <ul class="list-items">
+                        <% for(let tag = 0;tag < all_blogs[i].tags.length;tag++){ %>
+                            <li class="tag_names"><%= all_blogs[i].tags[tag] %></li>
+                        <% } %>
+                    </ul>
+                    <h3> <%= all_blogs[i].title %> </h3>
+                    
+                    <p><%= all_blogs[i].description %></p>
+                    <div class="tag_container link">
+                        <a href="/blogs/individual_blog/<%=`${all_blogs[i]._id}`%>">Read</a>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    </main>
+
+    <script>
+        function search_result(val){
+            val = val.toUpperCase();
+            
+            const list_items = document.getElementsByClassName("list-items");
+            for(let i = 0;i < list_items.length;i++){
+                if(list_items[i].innerHTML.toUpperCase().includes(val) === false){
+                    list_items[i].parentElement.style.display = "none";
+                }
+                else{
+                    list_items[i].parentElement.style.display = "";
+                }
+            }             
+        }
+    </script>
+
+<%- include("lower_body.ejs") %>

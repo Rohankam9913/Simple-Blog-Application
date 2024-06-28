@@ -1,0 +1,591 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("background.png");
+    min-height: 100vh;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #232323;
+    border-radius: 8px;
+
+}
+
+.nav_bar{
+    display: flex;
+    flex: 1;
+}
+
+.nav_bar li{
+    list-style-type : none;
+    font-weight: bold;
+    margin: 0px 10px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.nav_bar a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav_bar a:hover{
+    color: red;
+}
+
+.auth_link{
+    padding: 7px;
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: 4px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.input_section{
+    justify-content: center;
+    flex: 0.7;
+    display: flex;
+    margin-top: 10px;
+}
+
+.input_section input{
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    border: none;
+    width: 50%;
+    padding: 8px;
+    font-weight: bold;
+    margin: 5px 0px;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: lavender;
+}
+
+.search_btn{
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    padding: 10px;
+    background-color: dodgerblue;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search_btn:hover{
+    background-color: rgb(21, 93, 165);
+}
+
+.auth_link:hover{
+    color: red;
+}
+
+
+.auth_container{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.auth_container h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.auth_container label{
+    margin: 12px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.auth_container input{
+    margin: 12px;
+    width: 50%;
+    padding: 10px;
+    border-radius: 4px;
+    outline:none;
+    font-size: 17px;
+}
+
+#show{
+    padding: 10px;
+    background-color: lavender;
+    font-weight: bold;
+    color: #444;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.auth_btn{
+    background-color: dodgerblue;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin: 12px;
+    width: fit-content;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.auth_btn:hover{
+    background-color: rgb(8, 77, 146);
+}
+
+.description{
+    color: #333;
+    font-size: 16px;
+    margin: 12px;
+    font-weight: bold;
+}
+
+.description a{
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.active{
+    color: red;
+}
+
+.blog_body{
+    display: flex;
+    flex-direction: column;
+}
+
+.blog_body h2{
+    font-style: italic;
+    margin: 12px;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #222;
+    text-align: center;
+}
+
+.blog_body label{
+    margin: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.blog_body input{
+    margin: 15px;
+    font-family: sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    width: 50%;
+}
+
+.blog_body textarea{
+    margin: 15px;
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+    width: 50%;
+    height: 281px;
+    overflow : scroll;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.tag_list{
+    margin: 15px;
+    padding: 10px;
+    width: 30%;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.post_btn{
+    margin: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: dodgerblue;
+    color: white;
+    width: fit-content;
+    letter-spacing: 1px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.post_btn:hover{
+    background-color: rgb(19, 96, 173);
+}
+
+
+.main_body{
+    margin: 6px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main_body h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 1.2px;
+}
+
+.blogs{
+    background-color: lavender;
+    box-shadow: 4px 4px;
+    margin: 12px 0px;
+}
+
+.blogs:hover{
+    background-color: rgb(223, 223, 235);
+}
+
+.blogs h3{
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1.2px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 10px;
+}
+
+.blogs p{
+    font-size: 17px;
+    font-weight:300;
+    letter-spacing: 0.4px;
+    color: #111;
+    font-family: sans-serif;
+    margin: 10px;
+}
+
+.blogs button{
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin: 10px;
+}
+
+.link{
+    background-color: #111;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    width: fit-content;
+    height: fit-content;
+    margin: 10px;
+}
+
+.link a{
+    color: white;
+    text-decoration: none;
+}
+
+.tag_container{
+    margin: 10px;
+    display: flex;
+}
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    background-color: #444;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+}
+
+.links{
+    margin-top: 10px;
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer p{
+    font-weight: bold;
+    font-size: 19px;
+    color: #f1f1f1;
+    text-align: center;
+}
+
+.add_tag_btn{
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: teal;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.list{
+    margin: 15px;
+    display: flex;
+    align-items : center;
+}
+
+.tag_name{
+    background-color: rgb(195, 228, 228);
+    color: #111;
+    padding: 7px;
+    width: fit-content;
+    list-style: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 5px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.individual_blogs{
+    display: flex;
+    flex-direction: column;
+    margin : 3px;
+    padding: 3px;
+    min-height: 100vh;
+}
+
+.individual_blogs h2{
+    font-size: 22px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333;
+    letter-spacing: 1.2px;
+    text-align: center;
+}
+
+.individual_blogs h3{
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #222;
+    letter-spacing: 1.1px;
+    margin: 10px 2px;
+    line-height: 2;
+}
+
+.list-items{
+    margin: 10px;
+    display: flex;
+    align-items : center;
+}
+
+.tag_names{
+    background-color: rgb(195, 228, 228);
+    color: #111;
+    padding: 7px;
+    width: fit-content;
+    list-style: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.author_name{
+    display: flex;
+    align-items: center;
+    width: 13%;
+    justify-content: space-between;
+}
+
+.author_name p{
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+}
+
+.author_img{
+    height:"30px";
+    width:"30px" ;
+    border-radius: 50%;
+}
+
+.blog_content{
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 2.2;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 12px;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.comment_section{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 100vh;
+}
+
+.comment_section textarea{
+    padding: 5px;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none;
+    resize: none;
+}
+
+.comment_container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 0.1px solid lightgray;
+    padding: 5px;
+    margin:10px 0px;
+}
+
+.comment_section .post{
+    background-color: #222;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: fit-content;
+    margin: 10px 0px;
+}
+
+.dot{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #bbb;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+.user img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 14px;
+}
+
+.user p.name{
+    color: #333;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.user p.date{
+    color:#555;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.like{
+    background-color: dodgerblue;
+    margin: 10px 56px;
+    font-size: 16px;
+    border: none;
+    color : white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.like:hover{
+    background-color: rgb(21, 128, 235);
+}
+
+.comment_content{
+    margin-top: 10px;
+    margin-left: 56px;
+    font-size: 18px;
+    color: #222;
+}
+
+.not_found{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    flex-direction: column;
+}
+
+.not_found h2{
+    font-size: 25px;
+    font-family: cursive;
+    font-style: italic;
+    letter-spacing: 1.5px;
+}
+
+.not_found button{
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.not_found button:hover{
+    background-color: #141010;
+}
+
+@media screen and (max-width: 650px){
+    .nav_bar li{
+        font-size: 15px;
+    }
+
+    .auth_link{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .blog_body input{
+        width: 70%;
+    }
+    .blog_body textarea{
+        width: 70%;
+    }
+}

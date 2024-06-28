@@ -1,0 +1,49 @@
+<%-include("upper_body.ejs") %>
+
+    <form class="auth_container" id="login">
+        <h2>Login Page</h2>
+
+        <label>Enter Email</label>
+        <input type="email" required name="email">
+
+        <label>Enter Password</label>
+        <div>
+            <input type="password" id="password" required name="password">
+            <button onclick="show_password()" id="show" type="button">show</button>
+        </div>
+
+        <button class="auth_btn" type="submit">login</button>
+        <p class="description">Don't have an account ? <a href="/register">Register</a></p>
+
+    </form>
+    
+    <script>
+        const login = document.getElementById("login");
+        login.addEventListener("submit",async (e)=>{
+            e.preventDefault();
+            const email = e.target.email.value;
+            const password = e.target.password.value;
+
+            const response = await fetch("http://localhost:3000/login",{
+                method : "POST",
+                body : JSON.stringify({email, password}),
+                headers : {"Content-Type" : "application/json"}
+            });
+
+            const data = await response.json();
+
+            if(data.error === "User Credentials don't match"){
+                alert(data.error);
+            }
+        
+            if(!data.error){
+                localStorage.setItem("user",JSON.stringify(data));
+
+                setTimeout(()=>{
+                    navigateTo("/");
+                },1200)
+            }
+        })
+    </script>
+
+<%-include("lower_body.ejs") %>

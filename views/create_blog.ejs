@@ -1,0 +1,67 @@
+<%- include("upper_body.ejs") %>
+    <%- include("header.ejs") %>
+        <form class="blog_body" id="blog">
+            <h2>Write a blog which can provide knowledge and new insights to this world</h2>
+
+            <label>Title</label>
+            <input type="text" required name="title">
+
+            <label>Description</label>
+            <input type="text" required name="description" placeholder="less than 20 words">
+
+            <label>Blog Content</label>
+            <textarea required name="content"></textarea>
+
+            <label>Select a Tag</label>
+            <div style="display: flex; align-items: center;">
+                <select class="tag_list" id="select" required>
+                    <option value="React">React js</option>
+                    <option value="Node js">Node js</option>
+                    <option value="Data Structures and algorithms">Data Structures and algorithms</option>
+                    <option value="Next js">Next js</option>
+                    <option value="Front End">Front end</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Docker">Docker</option>
+                    <option value="Back End">Back End</option>
+                    <option value="Machine Learning">Macine Learning</option>
+                    <option value="Databases">Databases</option>
+                    <option value="Jenkins">Jenkins</option>
+                </select>
+
+                <button type="button" class="add_tag_btn" onclick="add_tag()">Add Tag</button>
+
+            </div>
+            <ul class="list"></ul>
+
+            <button class="post_btn" type="submit">Post blog</button>
+        </form>
+
+        <script>
+            const blog = document.getElementById("blog");
+            blog.addEventListener("submit",async (e)=>{
+                e.preventDefault();
+
+                const title = e.target.title.value;
+                const description = e.target.description.value;
+                const content = e.target.content.value;
+
+                const response = await fetch("http://localhost:3000/blogs/create_blog",{
+                    method : "POST",
+                    headers : {"Content-Type" : "application/json"},
+                    body : JSON.stringify({title,description,content,tags}),
+                    credentials : "include"
+                });
+
+                const data = await response.json();
+                console.log(data);
+                if(!data.error){
+                    navigateTo("http://localhost:3000/blogs/get_my_blogs");
+                    alert("Post Added");
+                }
+                
+            })
+
+        </script>
+
+        <%- include("lower_body.ejs") %>
+

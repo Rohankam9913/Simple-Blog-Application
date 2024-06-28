@@ -1,0 +1,18 @@
+<header class="header">
+            <img src="/favicon.png" height="30px" width="30px" alt="logo" onclick="navigateTo('/')" style="cursor: pointer;">
+            
+            <nav class="nav_bar">
+                <li><a href="/blogs/create_blog">Create Post</a></li>
+                <li><a href="/blogs/get_my_blogs">My Posts</a></li>
+                <li><a href="/blogs/get_all_blogs">All Posts</a></li>
+            </nav>
+
+            <section id="not_logged_in">
+                <a class="auth_link" href="/login">Login</a>
+                <a class="auth_link" href="/register">Signup</a>
+            </section>
+
+            <section id="logged_in">
+                <a class="auth_link" onclick="logout()">Logout</a>
+            </section>
+</header>
